@@ -1,0 +1,22 @@
+{
+  "name": "dtuned",
+  "version": "1.0.0",
+  "description": "Extract track information from valid `iTunes Music Library.xml` file",
+  "main": "dtuned.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allen-garvey/dtuned.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allen-garvey/dtuned/issues"
+  },
+  "homepage": "https://github.com/allen-garvey/dtuned#readme",
+  "dependencies": {
+    "fast-plist": "^0.1.2"
+  }
+}
