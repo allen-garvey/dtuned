@@ -23,11 +23,16 @@ function formatOptional(track, keyName, isString){
 	return value;
 }
 
+function formatLocation(location){
+	return escapeQuotes(location.replace(/%20/g, ' ').replace(/^.*iTunes Music\//g, ''));
+}
+
 function trackToSql(track){
 	var trackTable = "tracks";
 	var composer = formatOptional(track, 'Composer', true);
 	var artist = formatOptional(track, 'Artist', true);
-	return `INSERT INTO ${trackTable}(name, artist, file_size, total_time, year, composer) VALUES ('${escapeQuotes(track.Name)}', '${artist}', ${track["Size"]}, ${track["Total Time"]}, ${track["Year"]}, ${composer});`;
+
+	return `INSERT INTO ${trackTable}(name, artist, file_size, total_time, year, composer, file_location) VALUES ('${escapeQuotes(track.Name)}', ${artist}, ${track["Size"]}, ${track["Total Time"]}, ${track["Year"]}, ${composer}, ${formatLocation(track.Location)});`;
 }
 
 function printKeys(obj){
@@ -67,6 +72,7 @@ for(var id in tracks){
 		continue;
 	}
 	console.log(trackToSql(track));
+
 	// printKeys(track);
 	// break;
 }
