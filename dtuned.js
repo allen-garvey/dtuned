@@ -9,7 +9,7 @@ if(!musicLibrayXmlFilename){
 }
 
 function escapeQuotes(s){
-	return s.replace(/'/, "''");
+	return s.replace(/'/g, "''");
 }
 
 function formatOptional(track, keyName, isString){
