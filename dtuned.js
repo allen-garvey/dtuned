@@ -46,10 +46,18 @@ function objToSql(tableName, obj){
 
 function trackToSql(track){
 	var trackTable = "tracks";
-	var composer = formatOptional(track, 'Composer', true);
-	var artist = formatOptional(track, 'Artist', true);
 
-	return `INSERT INTO ${trackTable}(name, artist, file_size, total_time, year, composer, file_location) VALUES ('${escapeQuotes(track.Name)}', ${artist}, ${track["Size"]}, ${track["Total Time"]}, ${track["Year"]}, ${composer}, ${formatLocation(track.Location)});`;
+	var sqlMap = {
+		artist: formatOptional(track, 'Artist', true),
+		name: formatRequired(track.Name, true),
+		composer: formatOptional(track, 'Composer', true),
+		file_size: formatRequired(track.Size),
+		total_time: formatRequired(track['Total Time']),
+		year: formatRequired(track.Year),
+		file_location: formatRequired(formatLocation(track.Location), true)
+	};
+
+	return objToSql(trackTable, sqlMap);
 }
 
 function printKeys(obj){
