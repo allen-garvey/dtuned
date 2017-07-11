@@ -31,6 +31,19 @@ function formatLocation(location){
 	return escapeQuotes(decodeURI(location).replace(/^.*iTunes Music\//g, ''));
 }
 
+function objToSql(tableName, obj){
+	tableNames = [];
+	values = [];
+	Object.keys(obj).forEach(function(key){
+		tableNames.push(key);
+		values.push(obj[key]);
+	});
+
+	return `INSERT INTO ${tableName}(${tableNames.join(', ')}) VALUES (${values.join(', ')});`
+
+}
+
+
 function trackToSql(track){
 	var trackTable = "tracks";
 	var composer = formatOptional(track, 'Composer', true);
