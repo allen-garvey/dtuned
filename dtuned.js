@@ -12,15 +12,19 @@ function escapeQuotes(s){
 	return s.replace(/'/g, "''");
 }
 
+function formatRequired(value, isString){
+	if(isString){
+		return `'${escapeQuotes(value)}'`;
+	}
+	return value;
+}
+
 function formatOptional(track, keyName, isString){
 	var value = track[keyName];
 	if(!value){
 		return 'NULL';
 	}
-	if(isString){
-		return `'${escapeQuotes(value)}'`;
-	}
-	return value;
+	return formatRequired(value, isString);
 }
 
 function formatLocation(location){
