@@ -31,6 +31,11 @@ function formatLocation(location){
 	return escapeQuotes(decodeURI(location).replace(/^.*iTunes Music\//g, ''));
 }
 
+function formatDate(date){
+	return formatRequired(date.toISOString().replace(/T/, ' ').replace(/\.\d+Z$/, ''), true) + '::timestamp';
+
+}
+
 function objToSql(tableName, obj){
 	tableNames = [];
 	values = [];
