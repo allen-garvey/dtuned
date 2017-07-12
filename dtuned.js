@@ -59,7 +59,8 @@ function trackToSql(track){
 		file_size: formatRequired(track.Size),
 		total_time: formatRequired(track['Total Time']),
 		year: formatRequired(track.Year),
-		file_location: formatRequired(formatLocation(track.Location), true)
+		file_location: formatRequired(formatLocation(track.Location), true),
+		date_added: formatDate(track['Date Added'])
 	};
 
 	return objToSql(trackTable, sqlMap);
