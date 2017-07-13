@@ -28,7 +28,7 @@ function formatOptional(track, keyName, isString){
 }
 
 function formatLocation(location){
-	return escapeQuotes(decodeURI(location).replace(/^.*iTunes Music\//g, ''));
+	return decodeURI(location).replace(/^.*iTunes Music\//g, '');
 }
 
 function formatDate(date){
