@@ -36,6 +36,13 @@ function formatDate(date){
 
 }
 
+function formatRequiredInt(d){
+	if(!d){
+		return 0;
+	}
+	return d;
+}
+
 function objToSql(tableName, obj){
 	tableNames = [];
 	values = [];
@@ -60,7 +67,8 @@ function trackToSql(track){
 		total_time: formatRequired(track['Total Time']),
 		year: formatRequired(track.Year),
 		file_location: formatRequired(formatLocation(track.Location), true),
-		date_added: formatDate(track['Date Added'])
+		date_added: formatDate(track['Date Added']),
+		play_count: formatRequiredInt(track['Play Count'])
 	};
 
 	return objToSql(trackTable, sqlMap);
