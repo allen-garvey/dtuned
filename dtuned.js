@@ -68,7 +68,8 @@ function trackToSql(track){
 		year: formatRequired(track.Year),
 		file_location: formatRequired(formatLocation(track.Location), true),
 		date_added: formatDate(track['Date Added']),
-		play_count: formatRequiredInt(track['Play Count'])
+		play_count: formatRequiredInt(track['Play Count']),
+		bit_rate: formatRequiredInt(track['Bit Rate'])
 	};
 
 	return objToSql(trackTable, sqlMap);
