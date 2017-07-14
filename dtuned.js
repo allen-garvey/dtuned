@@ -61,6 +61,7 @@ function trackToSql(track){
 	var sqlMap = {
 		artist: formatOptional(track.Artist, true),
 		name: formatRequired(track.Name, true),
+		genre: formatOptional(track.Genre, true),
 		composer: formatOptional(track.Composer,  true),
 		file_size: formatRequired(track.Size),
 		total_time: formatRequired(track['Total Time']),
