@@ -19,9 +19,8 @@ function formatRequired(value, isString){
 	return value;
 }
 
-function formatOptional(track, keyName, isString){
-	var value = track[keyName];
-	if(!value){
+function formatOptional(value, isString){
+	if(value === null || value === undefined){
 		return 'NULL';
 	}
 	return formatRequired(value, isString);
@@ -60,9 +59,9 @@ function trackToSql(track){
 	var trackTable = "tracks";
 
 	var sqlMap = {
-		artist: formatOptional(track, 'Artist', true),
+		artist: formatOptional(track.Artist, true),
 		name: formatRequired(track.Name, true),
-		composer: formatOptional(track, 'Composer', true),
+		composer: formatOptional(track.Composer,  true),
 		file_size: formatRequired(track.Size),
 		total_time: formatRequired(track['Total Time']),
 		year: formatRequired(track.Year),
