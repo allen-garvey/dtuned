@@ -35,7 +35,7 @@ function formatDate(date){
 
 }
 
-function formatRequiredInt(d){
+function formatRequiredUnsignedInt(d){
 	if(!d){
 		return 0;
 	}
@@ -68,8 +68,8 @@ function trackToSql(track){
 		year: formatRequired(track.Year),
 		file_location: formatRequired(formatLocation(track.Location), true),
 		date_added: formatDate(track['Date Added']),
-		play_count: formatRequiredInt(track['Play Count']),
-		bit_rate: formatRequiredInt(track['Bit Rate'])
+		play_count: formatRequiredUnsignedInt(track['Play Count']),
+		bit_rate: formatRequiredUnsignedInt(track['Bit Rate'])
 	};
 
 	return objToSql(trackTable, sqlMap);
